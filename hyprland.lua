@@ -1,3 +1,11 @@
+---------------------
+---- MY PROGRAMS ----
+---------------------
+local mainMod = "SUPER"
+local terminal = "kitty"
+local fileManager = "dolphin"
+local menu = "hyprlauncher"
+
 ------------------
 ---- MONITORS ----
 ------------------
@@ -7,14 +15,6 @@ hl.monitor({
     position = "auto",
     scale    = "auto",
 })
-
----------------------
----- MY PROGRAMS ----
----------------------
-local mainMod = "SUPER"
-local terminal = "kitty"
-local fileManager = "dolphin"
-local menu = "hyprlauncher"
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -29,6 +29,7 @@ hl.env("HYPRCURSOR_SIZE", "24")
 -------------------
 hl.on("hyprland.start", function ()
   hl.exec_cmd("hyprctl setcursor Nordzy-cursors 24")
+  hl.exec_cmd("hyprpaper")
 end)
 
 ---------------
@@ -36,51 +37,55 @@ end)
 ---------------
 hl.config({
     general = {
-            gaps_in  = 5,
-            gaps_out = 10,
+        gaps_in  = 5,
+        gaps_out = 15,
 
-            border_size = 1,
+        border_size = 2,
 
-            col = {
-                active_border   = { colors = {"rgba(33ccffee)", "rgba(00ff99ee)"}, angle = 45 },
-                inactive_border = "rgba(595959aa)",
-            },
-
-            -- Set to true to enable resizing windows by clicking and dragging on borders and gaps
-            resize_on_border = false,
-
-            -- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
-            allow_tearing = false,
-
-            layout = "dwindle",
+        col = {
+            -- Catppuccin Mocha: Lavender (#b4befe) a Mauve (#cba6f7)
+            active_border   = { colors = {"0xffb4befe", "0xffcba6f7"}, angle = 45 },
+            -- Catppuccin Mocha: Surface0 (#313244)
+            inactive_border = "0xff313244",
         },
 
-        decoration = {
-            rounding       = 5,
-            rounding_power = 2,
+        -- Set to true to enable resizing windows by clicking and dragging on borders and gaps
+        resize_on_border = false,
 
-            -- Change transparency of focused and unfocused windows
-            active_opacity   = 0.9,
-            inactive_opacity = 0.9,
+        -- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
+        allow_tearing = false,
 
-            shadow = {
-                enabled      = true,
-                range        = 4,
-                render_power = 3,
-                color        = 0xee1a1a1a,
-            },
+        layout = "dwindle",
+    },
 
-            blur = {
-                enabled   = true,
-                size      = 3,
-                passes    = 1,
-                vibrancy  = 0.1696,
-            },
+    decoration = {
+        rounding       = 10,
+        rounding_power = 2,
+
+        -- Change transparency of focused and unfocused windows
+        active_opacity   = 0.9,
+        inactive_opacity = 0.85,
+
+        shadow = {
+            enabled      = true,
+            range        = 20,
+            render_power = 3,
+            color        = "rgba(1a1a1aee)",
         },
 
-        animations = {
-            enabled = true,
+        blur = {
+            enabled   = true,
+            size      = 6,
+            passes    = 2,
+            new_optimizations = true,
+            ignore_opacity    = true,
+            vibrancy  = 0.2,
         },
+    },
+
+    animations = {
+        enabled = true,
+    },
 })
 
 ----------------
@@ -89,8 +94,9 @@ hl.config({
 
 hl.config({
     misc = {
-        force_default_wallpaper = -1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
-        disable_hyprland_logo   = false, -- If true disables the random hyprland logo / anime girl background. :(
+        force_default_wallpaper = 0,    -- Set to 0 or 1 to disable the anime mascot wallpapers
+        disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
+        disable_splash_rendering = true,  -- TOTO odstráni ten text/citát, ktorý vidíš
     },
 })
 
